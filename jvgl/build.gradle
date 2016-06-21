@@ -1,0 +1,37 @@
+apply plugin: 'com.android.library'
+
+android {
+    signingConfigs {
+        config {
+            keyAlias 'vSphere'
+            keyPassword 'erotsyek_vSphere'
+//            storeFile file('D:/stuff/code/AS projects/vSphere/vSphere_keystore.jks')
+            storeFile file('vSphere_keystore.jks')
+            storePassword 'erotsyek_vSphere'
+        }
+    }
+    compileSdkVersion 20
+    buildToolsVersion '20.0.0'
+    defaultConfig {
+//        applicationId 'com.jvgl'
+        minSdkVersion 15
+        targetSdkVersion 20
+        versionCode 1
+        versionName '1.0'
+        signingConfig signingConfigs.config
+    }
+    buildTypes {
+        release {
+//            apply plugin: 'groovy'
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    productFlavors {
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+}
+
